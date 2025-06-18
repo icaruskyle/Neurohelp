@@ -1,32 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>NeuroHelp | Login or Register</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #eef2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            background: #eef2f5;
         }
+
         .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.1);
-            width: 360px;
+            display: flex;
+            width: 900px;
+            height: 600px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
         }
-        h2 {
+
+        .left-panel {
+            background-color: #ffffff;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .left-panel img {
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .left-panel h1 {
+            font-size: 2em;
+            color: #111;
+            margin-bottom: 10px;
+        }
+
+        .left-panel p {
+            font-size: 1.1em;
+            color: #333;
             text-align: center;
         }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        input[type="date"],
-        textarea,
-        input[type="submit"] {
+
+        .right-panel {
+            flex: 1;
+            background: linear-gradient(to right, #a2c0f9, #bda8f9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px;
+        }
+
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="email"],
+        .login-form input[type="password"],
+        .login-form input[type="date"],
+        .login-form textarea,
+        .login-form input[type="submit"] {
             width: 100%;
             padding: 10px;
             margin-top: 10px;
@@ -34,61 +94,128 @@
             border-radius: 8px;
             border: 1px solid #ccc;
         }
-        label {
+
+        .login-form label {
             display: block;
             margin-top: 10px;
         }
+
+        .button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn {
+            background-color: #bb86fc;
+            color: white;
+            border: 2px solid #bb86fc;
+        }
+
+        .login-btn:hover {
+            background-color: #a46ae0;
+        }
+
         .toggle {
             text-align: center;
             margin-top: 1rem;
         }
+
         .toggle a {
             text-decoration: none;
             color: #007bff;
         }
+
+        a.forgot {
+            font-size: 13px;
+            color: #111;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+        }
+
+        a.forgot:hover {
+            text-decoration: underline;
+        }
+
         .consent {
             margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .right-panel .back-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 18px;
+            background-color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        .right-panel .back-button:hover {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2 id="form-title">Login</h2>
 
-    <!-- Login Form -->
-    <form id="form" action="../auth/login.php" method="POST">
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="submit" value="Login" />
-    </form>
+    <!-- Left Panel -->
+    <div class="left-panel">
+        <img src="logon.jpg" alt="NeuroHelp Logo">
+        <h1>Welcome to NeuroHelp</h1>
+        <p>Your companion in mental health support and guidance.</p>
+    </div>
 
-    <p><a href="../auth/forgot_password.php">Forgot Password?</a></p>
+    <!-- Right Panel -->
+    <div class="right-panel">
+        <div class="login-form">
+            <h2 id="form-title">Login</h2>
 
-    <!-- Register Form (Hidden by Default) -->
-    <form id="register-form" action="../auth/register.php" method="POST" style="display: none;">
-        <input type="text" name="full_name" placeholder="Full Name" required />
-        <input type="date" name="birthday" required />
-        <input type="text" name="mobile" placeholder="Mobile Number" required />
-        <input type="text" name="address" placeholder="Address" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        
-        <div class="consent">
-            <input type="checkbox" name="consent" value="1" required />
-            <label for="consent">I consent to data collection and usage.</label>
+            <!-- Login Form -->
+            <form id="form" action="../auth/login.php" method="POST">
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <input type="submit" class="login-btn" value="Login" />
+                <a class="forgot" href="../auth/forgot_password.php">Forgot Password?</a>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" action="../auth/register.php" method="POST" style="display: none;">
+                <input type="text" name="full_name" placeholder="Full Name" required />
+                <input type="date" name="birthday" required />
+                <input type="text" name="mobile" placeholder="Mobile Number" required />
+                <input type="text" name="address" placeholder="Address" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                
+                <div class="consent">
+                    <input type="checkbox" name="consent" value="1" required />
+                    <label for="consent">I consent to data collection and usage.</label>
+                </div>
+
+                <input type="submit" class="login-btn" value="Register" />
+            </form>
+
+            <!-- Toggle Form -->
+            <div class="toggle">
+                <span id="toggle-text">Don't have an account?</span>
+                <a href="#" onclick="toggleForm()">Register</a>
+            </div>
         </div>
-
-        <input type="submit" value="Register" />
-    </form>
-
-    <!-- Toggle Link -->
-    <div class="toggle">
-        <span id="toggle-text">Don't have an account?</span>
-        <a href="#" onclick="toggleForm()">Register</a>
     </div>
 </div>
 
-<!-- JavaScript to Toggle Forms -->
 <script>
 function toggleForm() {
     const loginForm = document.getElementById('form');
@@ -111,17 +238,16 @@ function toggleForm() {
         toggleLink.innerText = 'Login';
     }
 }
+
 const params = new URLSearchParams(window.location.search);
 if (params.get('registered') === '1') {
     alert("✅ Registration successful! Please log in.");
     window.history.replaceState({}, document.title, window.location.pathname);
 }
-
 if (params.get('logout') === '1') {
     alert("👋 You have been logged out successfully.");
     window.history.replaceState({}, document.title, window.location.pathname);
 }
-
 </script>
 </body>
 </html>
