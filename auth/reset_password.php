@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head><title>Reset Password</title></head>
 <body>
     <h2>Reset Password</h2>
+    <link rel="stylesheet" href="reset.css">
     <form method="POST">
         <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
         <input type="password" name="password" placeholder="New Password" required><br><br>

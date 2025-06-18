@@ -21,8 +21,8 @@
 
         .container {
             display: flex;
-            width: 900px;
-            height: 600px;
+            width: 1000px;
+            height: 800px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             border-radius: 20px;
             overflow: hidden;
@@ -35,7 +35,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+            padding: 10px;
         }
 
         .left-panel img {

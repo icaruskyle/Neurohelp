@@ -1,0 +1,79 @@
+/*Reset Password */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f0f0;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #c8f2e0, #96baf7); /* soft gradient background */
+  border: 3px solid #c187f8; /* violet border accent */
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px; /* smooth rounded corners */
+  width: 420px;
+  text-align: left;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.1); /* subtle shadow for elevation */
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-section img {
+  width: 60px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.title-text h1 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 2px;
+}
+
+.title-text .tagline {
+  font-size: 0.65rem;
+  color: #111;
+  margin: 0;
+}
+
+p {
+  margin: 12px 0;
+  font-size: 1rem;
+  color: #000;
+}
+
+.reset-link {
+  color: #4b00ff; /* highlight reset link in purple */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.token {
+  display: block;
+  margin-top: 10px;
+  background-color: #f5f5f5;
+  padding: 8px;
+  border-radius: 5px;
+  font-family: monospace;
+  word-break: break-all;
+  font-size: 0.9rem;
+}
