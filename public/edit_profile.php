@@ -37,38 +37,66 @@ $user = $result->fetch_assoc();
 <html>
 <head>
     <title>Edit Profile</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: #f4f7fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+<style>
+    body {
+        font-family: Arial;
+        background: #f4f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 1rem;
+    }
+
+    .form-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    textarea,
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .back-button {
+        width: 100%;
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #e0e0e0;
+        border: none;
+        cursor: pointer;
+    }
+
+    @media (max-width: 500px) {
         .form-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.1);
-            width: 400px;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="date"],
-        textarea,
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            padding: 1rem;
             border-radius: 8px;
-            border: 1px solid #ccc;
         }
-        label {
-            font-weight: bold;
+
+        input, .back-button {
+            font-size: 16px;
         }
-    </style>
+    }
+</style>
 </head>
 <body>
 <div class="form-container">

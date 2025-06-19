@@ -2,170 +2,205 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeuroHelp | Login or Register</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #eef2f5;
-        }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #eef2f5;
+        padding: 1rem;
+    }
 
+    .container {
+        display: flex;
+        flex-direction: row;
+        max-width: 1000px;
+        width: 100%;
+        height: auto;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        background: #fff;
+        flex-wrap: wrap;
+    }
+
+    .left-panel,
+    .right-panel {
+        flex: 1;
+        min-width: 300px;
+        padding: 2rem;
+        box-sizing: border-box;
+    }
+
+    .left-panel {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .left-panel img {
+        width: 80%;
+        max-width: 250px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .left-panel h1 {
+        font-size: 2em;
+        color: #111;
+        margin-bottom: 10px;
+    }
+
+    .left-panel p {
+        font-size: 1.1em;
+        color: #333;
+    }
+
+    .right-panel {
+        background: linear-gradient(to right, #a2c0f9, #bda8f9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .login-form {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        width: 100%;
+        max-width: 350px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="email"],
+    .login-form input[type="password"],
+    .login-form input[type="date"],
+    .login-form textarea,
+    .login-form input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .login-form label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .button {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .login-btn {
+        background-color: #bb86fc;
+        color: white;
+        border: 2px solid #bb86fc;
+    }
+
+    .login-btn:hover {
+        background-color: #a46ae0;
+    }
+
+    .toggle {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .toggle a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    a.forgot {
+        font-size: 13px;
+        color: #111;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        margin-top: 10px;
+    }
+
+    a.forgot:hover {
+        text-decoration: underline;
+    }
+
+    .consent {
+        margin: 10px 0;
+        font-size: 0.9em;
+    }
+
+    .right-panel .back-button {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 18px;
+        background-color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .right-panel .back-button:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* ✅ Responsive Styles for Mobile */
+    @media (max-width: 768px) {
         .container {
-            display: flex;
-            width: 1000px;
-            height: 800px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            overflow: hidden;
+            flex-direction: column;
+            height: auto;
         }
 
-        .left-panel {
-            background-color: #ffffff;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
+        .left-panel,
+        .right-panel {
+            width: 100%;
+            padding: 1.5rem;
         }
 
         .left-panel img {
-            width: 300px;
-            margin-bottom: 20px;
-        }
-
-        .left-panel h1 {
-            font-size: 2em;
-            color: #111;
-            margin-bottom: 10px;
-        }
-
-        .left-panel p {
-            font-size: 1.1em;
-            color: #333;
-            text-align: center;
+            max-width: 200px;
         }
 
         .right-panel {
-            flex: 1;
-            background: linear-gradient(to right, #a2c0f9, #bda8f9);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 40px;
+            min-height: auto;
         }
+    }
+</style>
 
-        .login-form {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 350px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .login-form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .login-form input[type="text"],
-        .login-form input[type="email"],
-        .login-form input[type="password"],
-        .login-form input[type="date"],
-        .login-form textarea,
-        .login-form input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        .login-form label {
-            display: block;
-            margin-top: 10px;
-        }
-
-        .button {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .login-btn {
-            background-color: #bb86fc;
-            color: white;
-            border: 2px solid #bb86fc;
-        }
-
-        .login-btn:hover {
-            background-color: #a46ae0;
-        }
-
-        .toggle {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .toggle a {
-            text-decoration: none;
-            color: #007bff;
-        }
-
-        a.forgot {
-            font-size: 13px;
-            color: #111;
-            text-decoration: none;
-            text-align: center;
-            display: block;
-            margin-top: 10px;
-        }
-
-        a.forgot:hover {
-            text-decoration: underline;
-        }
-
-        .consent {
-            margin: 10px 0;
-            font-size: 0.9em;
-        }
-
-        .right-panel .back-button {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 18px;
-            background-color: #fff;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 5px rgba(0,0,0,0.2);
-        }
-
-        .right-panel .back-button:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
 </head>
 <body>
 <div class="container">

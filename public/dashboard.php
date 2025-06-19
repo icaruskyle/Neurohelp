@@ -32,47 +32,88 @@ $logs = $stmt->get_result();
 <html>
 <head>
     <title>NeuroHelp | Dashboard</title>
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f7f9fc;
-            padding: 2rem;
-        }
+   <style>
+    body {
+        font-family: Arial;
+        background-color: #f7f9fc;
+        padding: 1rem;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        max-width: 800px;
+        margin: 0 auto 20px auto;
+        width: 100%;
+    }
+
+    h2, h3 {
+        margin-bottom: 10px;
+    }
+
+    .profile, .logs {
+        margin-top: 20px;
+    }
+
+    .log-item {
+        background: #eef2f5;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .actions {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .actions a {
+        text-decoration: none;
+        color: white;
+        background: #007bff;
+        padding: 10px 16px;
+        border-radius: 8px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .actions a.logout {
+        background: #dc3545;
+    }
+
+    button {
+        padding: 10px 16px;
+        border-radius: 8px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    @media (max-width: 600px) {
         .card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 800px;
-            margin: 0 auto 20px auto;
+            padding: 15px;
         }
-        h2 {
-            margin-bottom: 10px;
-        }
-        .profile, .logs {
-            margin-top: 20px;
-        }
-        .log-item {
-            background: #eef2f5;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+
         .actions {
-            margin-top: 20px;
+            flex-direction: column;
         }
+
         .actions a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: white;
-            background: #007bff;
-            padding: 8px 14px;
-            border-radius: 8px;
+            width: 100%;
         }
-        .actions a.logout {
-            background: #dc3545;
+
+        button {
+            font-size: 16px;
         }
-    </style>
+    }
+</style>
+
 </head>
 <body>
 
