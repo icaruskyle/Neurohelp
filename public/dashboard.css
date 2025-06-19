@@ -1,0 +1,147 @@
+/* Reset some default browser styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  height: 100vh;
+  background-color: #f5f8fa;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.sidebar h1 {
+  font-size: 22px;
+  color: #333;
+  margin: 0;
+}
+
+.sidebar p {
+  font-size: 12px;
+  text-align: center;
+  margin: 5px 0 20px;
+}
+
+.nav-buttons {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.nav-buttons li {
+  margin: 10px 0;
+}
+
+.nav-buttons a {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border: 2px solid #7a42f4;
+  color: #7a42f4;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-buttons a:hover {
+  background-color: #e0d4ff;
+}
+
+.main-content {
+  flex-grow: 1;
+  background: linear-gradient(to right, #c0f0e8, #96b8ff);
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.tile {
+  background-color: #eaeaea;
+  border-radius: 25px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tile:hover {
+  transform: scale(1.05);
+  background-color: #d6d4ff;
+}
+
+.tile img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 15px;
+  object-fit: contain;
+}
+
+.tile p {
+  font-weight: bold;
+  color: #3d1e7a;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* Optional: Styling for user profile content if used as separate section */
+.user-info {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Optional: Mental Health Log entry cards */
+.log-entry {
+  background-color: #f2f2ff;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 20px; /* or any value you want */
+}
