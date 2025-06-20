@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Journal - NeuroHelp</title>
+  <link rel="stylesheet" href="journal.css">
+</head>
+<body>
+
+
+<div class="journal-container">
+  <div class="back-button-wrapper">
+    <a href="dashboard1.php">
+      <button class="back-btn">⬅ Back</button>
+    </a>
+  </div>
+
+    <h2>📝 Daily Journal</h2>
+    <p>Write your thoughts, feelings, or reflections for today:</p>
+
+    <form id="journal-form">
+      <!-- TextArea for the user to write their journal entry -->
+      <textarea name="entry" id="entry" placeholder="Dear journal..." required></textarea>  
+      
+      <!-- Button to save the entry -->
+      <button type="submit">Save Entry</button> 
+    </form>
+
+    <!-- Status message -->
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    // Save journal entry to localStorage
+    document.getElementById('journal-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const entry = document.getElementById('entry').value;
+
+      localStorage.setItem('dailyJournal', entry); // Temporary local save
+      document.getElementById('status').innerText = "✅ Entry saved (temporarily).";
+    });
+
+    // Load saved journal entry on page load
+    window.onload = function() {
+      const saved = localStorage.getItem('dailyJournal');
+      if (saved) document.getElementById('entry').value = saved;
+    };
+
+    // Back button function
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

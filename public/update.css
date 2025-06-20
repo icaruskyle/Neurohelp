@@ -1,0 +1,55 @@
+/* Update Css */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #d0f0ff, #a6c6ff); /* Light blue gradient */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  margin: 0; /* Remove default margin */
+}
+
+/*Main container for updates */
+.updates-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15); /* Subtle shadow */
+  width: 500px;
+  text-align: center;
+}
+
+/*List styling*/
+ul {
+  text-align: left; /* Left align list items */
+  margin-top: 20px;
+}
+
+/*Note under the list */
+.note {
+  font-size: 13px;
+  margin-top: 15px;
+  color: gray;
+}
+
+/*Back button container*/
+.back-button-wrapper {
+  text-align: left; /* Align button to left */
+  margin-bottom: 10px;
+}
+
+/* Back button styles */
+.back-btn {
+  background-color: #66069e; /* Purple shade */
+  color: #f1eded; /* Off-white text */
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Back button hover effect */
+.back-btn:hover {
+  background-color: #bbb; /* Light gray on hover */
+}

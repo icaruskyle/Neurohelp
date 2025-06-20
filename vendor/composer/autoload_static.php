@@ -4,74 +4,27 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
+class ComposerStaticInitf056aac0b936e279b86afb5b02f5d5bb
 {
     public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'StellaMaris\\Clock\\' => 18,
-        ),
         'P' => 
         array (
-            'Psr\\Http\\Message\\' => 17,
-            'Psr\\Clock\\' => 10,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
-        'L' => 
+        'J' => 
         array (
-            'League\\Uri\\' => 11,
-            'League\\OAuth2\\Server\\' => 21,
-            'League\\Event\\' => 13,
-            'Lcobucci\\JWT\\' => 13,
-            'Lcobucci\\Clock\\' => 15,
-        ),
-        'D' => 
-        array (
-            'Defuse\\Crypto\\' => 14,
+            'Joanamarienaval\\Neurohelp\\' => 26,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'StellaMaris\\Clock\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stella-maris/clock/src',
-        ),
-        'Psr\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Psr\\Clock\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/clock/src',
-        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
-        'League\\Uri\\' => 
+        'Joanamarienaval\\Neurohelp\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri/src',
-            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
-        ),
-        'League\\OAuth2\\Server\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/league/oauth2-server/src',
-        ),
-        'League\\Event\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/league/event/src',
-        ),
-        'Lcobucci\\JWT\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
-        ),
-        'Lcobucci\\Clock\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/lcobucci/clock/src',
-        ),
-        'Defuse\\Crypto\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/defuse/php-encryption/src',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
@@ -82,9 +35,9 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2185d2f99bcd56787481d9357a5972d3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2185d2f99bcd56787481d9357a5972d3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2185d2f99bcd56787481d9357a5972d3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf056aac0b936e279b86afb5b02f5d5bb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf056aac0b936e279b86afb5b02f5d5bb::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf056aac0b936e279b86afb5b02f5d5bb::$classMap;
 
         }, null, ClassLoader::class);
     }

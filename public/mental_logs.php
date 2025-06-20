@@ -55,16 +55,122 @@ $result = $stmt->get_result();
 <html>
 <head>
     <title>Mental Health Logs</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f8ff;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h2, h3 {
+            color: #4b2aad;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #7a42f4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #5d2cd3;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .back-btn button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #e2d1f9;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #4b2aad;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .success-msg {
+            color: green;
+        }
+
+        .error-msg {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <h2>Mental Health Journal & Mood Tracker</h2>
 
     <?php if (isset($_GET['saved'])): ?>
-        <p style="color:green;">✅ Your journal entry was saved.</p>
+        <p class="success-msg">✅ Your journal entry was saved.</p>
     <?php endif; ?>
 
     <?php if (isset($error)): ?>
-        <p style="color:red;"><?= htmlspecialchars($error) ?></p>
+        <p class="error-msg"><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>
 
     <form method="POST">
@@ -77,13 +183,18 @@ $result = $stmt->get_result();
             <option value="Angry">😠 Angry</option>
             <option value="Excited">😃 Excited</option>
             <option value="Tired">😴 Tired</option>
-        </select><br><br>
+        </select>
 
-        <label for="journal">Your thoughts:</label><br>
-        <textarea name="journal" rows="5" cols="60" required></textarea><br><br>
+        <label for="journal">Your thoughts:</label>
+        <textarea name="journal" rows="5" required></textarea>
 
         <button type="submit">Save Entry</button>
     </form>
+
+    <!-- Back Button -->
+    <a href="dashboard1.php" class="back-btn">
+        <button>⬅ Back to Dashboard</button>
+    </a>
 
     <hr>
 
@@ -97,7 +208,7 @@ $result = $stmt->get_result();
     <hr>
 
     <h2>Your Journal History</h2>
-    <table border="1" cellpadding="5">
+    <table>
         <tr>
             <th>Date</th>
             <th>Mood</th>

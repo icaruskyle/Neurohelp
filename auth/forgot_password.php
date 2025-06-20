@@ -1,23 +1,46 @@
 <?php
-require_once _DIR_ . '/../includes/db.php';
-require_once _DIR_ . '/../includes/mailer.php';
+require_once __DIR__ . '/../includes/db.php';
+date_default_timezone_set('Asia/Manila');
+
+$step = 1;
+$message = "";
+$enteredToken = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $token = bin2hex(random_bytes(16));
-    $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
+    if (isset($_POST['email'])) {
+        // STEP 1: User submits email
+        $email = $_POST['email'];
+        $token = bin2hex(random_bytes(4)); // 8-character token
+        $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
-    $stmt = $conn->prepare("UPDATE users SET reset_token = ?, reset_expires = ? WHERE email = ?");
-    $stmt->bind_param("sss", $token, $expires, $email);
-    $stmt->execute();
+        $stmt = $conn->prepare("UPDATE users SET reset_token = ?, reset_expires = ? WHERE email = ?");
+        $stmt->bind_param("sss", $token, $expires, $email);
+        $stmt->execute();
 
-    if ($stmt->affected_rows > 0) {
-        $resetLink = "http://localhost/NeuroHelp/auth/reset_password.php?token=$token";
-        $body = "Click the link below to reset your password:<br><a href='$resetLink'>$resetLink</a>";
-        sendMail($email, "Password Reset - NeuroHelp", $body);
-        $message = "✅ A password reset link has been sent to your email.";
-    } else {
-        $message = "❌ No user found with that email address.";
+        if ($stmt->affected_rows > 0) {
+            $step = 2;
+            $message = "✅ A reset token has been sent or provided. Please enter it below.";
+            // Optional: log to server for admin use
+            error_log("Reset token for $email: $token");
+        } else {
+            $message = "❌ No user found with that email address.";
+        }
+    } elseif (isset($_POST['token'])) {
+        // STEP 2: User submits token
+        $enteredToken = trim($_POST['token']);
+
+        $stmt = $conn->prepare("SELECT id FROM users WHERE reset_token = ? AND reset_expires > NOW()");
+        $stmt->bind_param("s", $enteredToken);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            header("Location: reset_password.php?token=" . urlencode($enteredToken));
+            exit;
+        } else {
+            $message = "❌ Invalid or expired token.";
+            $step = 2;
+        }
     }
 }
 ?>
@@ -67,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       color: #444;
     }
 
-    form input[type="email"] {
+    form input {
       width: 100%;
       padding: 12px;
       border: 1px solid #ccc;
@@ -98,10 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       border-radius: 6px;
       font-size: 14px;
       text-align: center;
-    }
-
-    .status-message:before {
-      content: "ℹ️ ";
+      background-color: #f5f5f5;
     }
 
     .back-link {
@@ -124,16 +144,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="reset-container">
     <div class="reset-box">
       <h2>🔒 Forgot Password</h2>
-      <p>Enter your registered email below and we'll send you a link to reset your password.</p>
-      <form method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <button type="submit">Send Reset Link</button>
-      </form>
-      <?php if (isset($message)): ?>
+
+      <?php if ($step === 1): ?>
+        <p>Enter your registered email to generate a reset token.</p>
+        <form method="POST">
+          <input type="email" name="email" placeholder="Enter your email" required autofocus>
+          <button type="submit">Generate Token</button>
+        </form>
+
+      <?php elseif ($step === 2): ?>
+        <p>Enter the token provided to you.</p>
+        <form method="POST">
+          <input type="text" name="token" value="<?= htmlspecialchars($enteredToken) ?>" placeholder="Enter reset token" required autofocus>
+          <button type="submit">Verify Token</button>
+        </form>
+      <?php endif; ?>
+
+      <?php if ($message): ?>
         <div class="status-message"><?= htmlspecialchars($message) ?></div>
       <?php endif; ?>
+
       <div class="back-link">
-        <a href="../index.html">← Back to Login</a>
+        <a href="../public/index.php">← Back to Login</a>
       </div>
     </div>
   </div>

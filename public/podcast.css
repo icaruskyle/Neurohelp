@@ -1,0 +1,47 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #d0f0ff, #a6c6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.podcast-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  width: 500px;
+  text-align: center;
+}
+
+.podcast-list {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.note {
+  font-size: 13px;
+  margin-top: 15px;
+  color: gray;
+}
+
+.back-button-wrapper {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.back-btn {
+  background-color: #a311b9;
+  color: #e9e3e3;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #bbb;
+}

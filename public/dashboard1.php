@@ -1,3 +1,22 @@
+<?php
+require_once __DIR__ . '/../includes/db.php';
+session_start();
+
+// Check if user is logged in
+$user_id = $_SESSION['user_id'] ?? null;
+if (!$user_id) {
+  header("Location: ../auth/login.php");
+  exit;
+}
+
+// Fetch user info
+$stmt = $conn->prepare("SELECT full_name, birthday, mobile, address, email FROM users WHERE id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +31,11 @@
     <h1>NeuroHelp</h1>
     <p>Your AI-Driven Mental Health Care Companion</p>
     <ul class="nav-buttons">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Explore</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Heneuro</a></li>
-      <li><a href="#">SNS</a></li>
+      <li><a href="dashboard1.php">Home</a></li>
+      <li><a href="update.html">Explore</a></li>
+      <li><a href="update.html">Daily</a></li>
+      <li><a href="journal.html">Heneuro</a></li>
+      <li><a href="chat.html">SNS</a></li>
       <li><a href="edit_profile.php">Profile</a></li>
       <li><a href="../auth/logout.php">Logout</a></li>
     </ul>
@@ -25,6 +44,24 @@
   <main class="main-content">
     <div class="dashboard">
       <!-- Regular Tiles -->
+
+          <!-- User Info -->
+      <!-- User Info -->
+<div class="profile-card">
+  <h3> Welcome, <?= htmlspecialchars($user['full_name']) ?>!</h3>
+  <h4><strong>👤Your Profile</strong></h4>
+  <ul>
+    <li><strong>Birthday:</strong> <?= htmlspecialchars($user['birthday']) ?></li>
+    <li><strong>Mobile:</strong> <?= htmlspecialchars($user['mobile']) ?></li>
+    <li><strong>Address:</strong> <?= htmlspecialchars($user['address']) ?></li>
+    <li><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></li>
+  </ul>
+</div>
+
+      <br>
+      <br>
+      <br>
+
       <div class="tile" onclick="location.href='journal.html'">
         <img src="daily.png" alt="Daily Journal">
         <p>DAILY JOURNAL</p>
@@ -42,14 +79,6 @@
         <p>PODCAST</p>
       </div>
 
-      <!-- User Info -->
-      <div class="tile">
-        <p><strong>Welcome, <?= htmlspecialchars($user['full_name']) ?></strong></p>
-        <p>Birthday: <?= $user['birthday'] ?></p>
-        <p>Mobile: <?= $user['mobile'] ?></p>
-        <p>Address: <?= $user['address'] ?></p>
-        <p>Email: <?= $user['email'] ?></p>
-      </div>
 
       <!-- View Logs -->
       <div class="tile" onclick="location.href='mental_logs.php'">
@@ -59,7 +88,7 @@
 
       <!-- RSA Test -->
       <div class="tile" onclick="location.href='../test_rsa_keys.php'">
-        <img src="lock.png" alt="RSA" />
+        <img src="locks.png" alt="RSA" />
         <p>🔐 Test RSA Keys</p>
       </div>
     </div>

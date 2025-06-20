@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Updates - NeuroHelp</title>
+  <link rel="stylesheet" href="update.css" />
+</head>
+<body>
+  <div class="updates-container">
+
+    <!-- Back button wrapper -->
+    <div class="back-button-wrapper">
+      <!-- Button to navigate back -->
+      <button type="button" onclick="goBack()" class="back-btn" aria-label="Go back to previous page">← Back</button>
+    </div>
+
+    <h2>🔔 NeuroHelp Updates</h2>
+
+    <!-- List of updates -->
+    <ul>
+      <li><strong>June 2025:</strong> AI Chat Beta will launch soon!</li>
+      <li><strong>May 2025:</strong> Journal auto-save feature added.</li>
+      <li><strong>April 2025:</strong> UI enhancements for better user experience.</li>
+    </ul>
+
+    <!-- Informational note -->
+    <p class="note">(These are sample updates just for UI demo.)</p>
+  </div>
+
+  <script>
+    // Go back to previous page in history
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

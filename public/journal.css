@@ -1,0 +1,72 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ccebf3, #a6c6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.journal-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  width: 700px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #5c33cc;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  border: 2px solid #a28ff4;
+  padding: 15px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  resize: vertical;
+}
+
+button {
+  background: #5c33cc;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #4a26b6;
+}
+
+.status {
+  margin-top: 15px;
+  font-size: 14px;
+  color: green;
+}
+
+.back-button-wrapper {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.back-btn {
+  background-color: #350ba9;
+  color: #fffcfc;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #bbb;
+}

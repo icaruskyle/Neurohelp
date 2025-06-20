@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NeuroHelp Podcasts</title>
+  <link rel="stylesheet" href="podcast.css">
+</head>
+<body>
+  <div class="podcast-container">
+
+    <!-- Back button to go to the previous page -->
+    <div class="back-button-wrapper">
+      <button type="button" onclick="goBack()" class="back-btn">← Back</button>
+    </div>
+
+    <h2>🎧 Featured Podcasts</h2>
+
+    <ul class="podcast-list">
+      <li>🌿 Episode 1: Breathing Techniques for Stress Relief</li>
+      <li>🧠 Episode 2: Understanding Mental Health Triggers</li>
+      <li>🗣️ Episode 3: The Power of Journaling</li>
+    </ul>
+
+    <!-- Placeholder note for future podcast features -->
+    <p class="note">(Coming soon: Playable podcast episodes and more!)</p>
+  </div>
+
+  <script>
+    // Back button functionality
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

@@ -145,3 +145,28 @@ body {
   border-radius: 12px;
   margin-top: 20px; /* or any value you want */
 }
+
+.profile-card {
+  
+  padding: 20px;
+  max-width: 480px;
+  width: 200%;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.profile-card h3 {
+  margin-bottom: 10px;
+  color: #4b2aad;
+  font-size: 30px;
+}
+
+.profile-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-card li {
+  margin-bottom: 8px;
+}
